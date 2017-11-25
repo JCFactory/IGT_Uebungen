@@ -11,24 +11,24 @@ public class Customer {
     
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="CUSTOMER_ID")
+    @Column(name="C_ID")
 	private long customer_id;
 	
-	@Column(name="CUSTOMER_NAME")
-	private String customer_name;
+	@Column(name="C_FORENAME")
+	private String c_forename;
 	
-	@Column(name="CUSTOMER_LASTNAME")
-    private String customer_lastname;
+	@Column(name="C_SURNAME")
+    private String c_surname;
     
-	@Column(name="CUSTOMER_COMPANY")
-    private String customer_company;
+	@Column(name="C_COMPANY")
+    private String c_company;
     
     public Customer() {}
     
-    public Customer(String customer_name, String customer_lastname, String customer_company) {
-    	this.customer_name = customer_name;
-    	this.customer_lastname = customer_lastname;
-    	this.customer_company = customer_company;
+    public Customer(String c_forename, String c_lastname, String c_company) {
+    	this.c_forename = c_forename;
+    	this.c_surname = c_surname;
+    	this.c_company = c_company;
     }
     
 	public long getCustomer_id() {
@@ -39,28 +39,28 @@ public class Customer {
 		this.customer_id = c_id;
 	}
 
-	public String getCustomer_name() {
-		return customer_name;
+	public String getCustomer_forename() {
+		return c_forename;
 	}
 
-	public void setCustomer_name(String c_name) {
-		this.customer_name = c_name;
+	public void setCustomer_forename(String c_forename) {
+		this.c_forename = c_forename;
 	}
 
-	public String getCustomer_lastname() {
-		return customer_lastname;
+	public String getCustomer_surname() {
+		return c_surname;
 	}
 
-	public void setCustomer_lastname(String c_lastname) {
-		this.customer_lastname = c_lastname;
+	public void setCustomer_surname(String c_surname) {
+		this.c_surname = c_surname;
 	}
 
 	public String getCustomer_company() {
-		return customer_company;
+		return c_company;
 	}
 
 	public void setCustomer_company(String c_company) {
-		this.customer_company = c_company;
+		this.c_company = c_company;
 	}
 
 	
