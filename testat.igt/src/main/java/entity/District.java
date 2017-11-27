@@ -1,10 +1,12 @@
 package entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity(name = "DISTRICT")
 public class District {
@@ -16,6 +18,9 @@ public class District {
 
 	@Column(name = "D_NAME")
 	private String d_name;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	private Warehouse warehouse;
 
 	public District() {}
 
@@ -38,5 +43,7 @@ public class District {
 	public void setDistrict_name(String d_name) {
 		this.d_name = d_name;
 	}
+	
+	
 
 }
