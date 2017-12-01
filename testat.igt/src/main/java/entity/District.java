@@ -24,26 +24,27 @@ public class District {
 
 	public District() {}
 
-	public District(String d_name) {
-    	this.d_name = d_name;
-    }
-	
-	public long getDistrict_zip() {
+	public long getD_zip() {
 		return d_zip;
 	}
 
-	public void setDistrict_zip(long d_zip) {
+	public void setD_zip(long d_zip) {
 		this.d_zip = d_zip;
 	}
 
-	public String getDistrict_name() {
+	public String getD_name() {
 		return d_name;
 	}
 
-	public void setDistrict_name(String d_name) {
+	public void setD_name(String d_name) {
 		this.d_name = d_name;
 	}
-	
-	
 
+	public Warehouse getWarehouse() {
+		return warehouse;
+	}
+
+	public void setWarehouse(Warehouse warehouse) {
+		this.warehouse = warehouse;
+	}
 }

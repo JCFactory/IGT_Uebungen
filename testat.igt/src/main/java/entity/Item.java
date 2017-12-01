@@ -21,11 +21,14 @@ public class Item {
 	
 	public Item() {}
 
-	public Item(String i_name, double i_price) {
-		this.i_name = i_name;
-		this.i_price = i_price;
+	public long getI_id() {
+		return i_id;
 	}
-	
+
+	public void setI_id(long i_id) {
+		this.i_id = i_id;
+	}
+
 	public String getI_name() {
 		return i_name;
 	}
@@ -42,8 +45,5 @@ public class Item {
 		this.i_price = i_price;
 	}
 
-	
-	
-	
 	
 }

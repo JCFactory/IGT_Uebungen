@@ -24,45 +24,39 @@ public class Customer {
     private String c_company;
     
     public Customer() {}
-    
-    public Customer(String c_forename, String c_lastname, String c_company) {
-    	this.c_forename = c_forename;
-    	this.c_surname = c_surname;
-    	this.c_company = c_company;
-    }
-    
+
 	public long getCustomer_id() {
 		return customer_id;
 	}
 
-	public void setCustomer_id(long c_id) {
-		this.customer_id = c_id;
+	public void setCustomer_id(long customer_id) {
+		this.customer_id = customer_id;
 	}
 
-	public String getCustomer_forename() {
+	public String getC_forename() {
 		return c_forename;
 	}
 
-	public void setCustomer_forename(String c_forename) {
+	public void setC_forename(String c_forename) {
 		this.c_forename = c_forename;
 	}
 
-	public String getCustomer_surname() {
+	public String getC_surname() {
 		return c_surname;
 	}
 
-	public void setCustomer_surname(String c_surname) {
+	public void setC_surname(String c_surname) {
 		this.c_surname = c_surname;
 	}
 
-	public String getCustomer_company() {
+	public String getC_company() {
 		return c_company;
 	}
 
-	public void setCustomer_company(String c_company) {
+	public void setC_company(String c_company) {
 		this.c_company = c_company;
 	}
+    
 
-	
 }
 
