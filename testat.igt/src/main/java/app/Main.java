@@ -1,7 +1,5 @@
 package app;
 
-import org.hibernate.Transaction;
-
 import entity.Customer;
 
 public class Main {
@@ -12,7 +10,7 @@ public class Main {
 		
 		
 		/**
-		 * AUFGABE 2 - BEWEIS DASS HIBERNATE KEINE GESCHACHTELTEN TRANSAKTIONEN ZULÄSST
+		 * AUFGABE 2 - BEWEISEN DASS HIBERNATE KEINE GESCHACHTELTEN TRANSAKTIONEN ZULÄSST
 		 */
 //		Transaction t = entityManager.getSession().beginTransaction();
 //		t.commit();
@@ -20,6 +18,7 @@ public class Main {
 		
 		
 		Customer customer = new Customer();
+		entityManager.getSession().save(customer);
 
 		entityManager.close();
 	}

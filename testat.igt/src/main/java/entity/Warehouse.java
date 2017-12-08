@@ -9,7 +9,7 @@ import javax.persistence.Id;
 public class Warehouse {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name = "W_ID")
 	private long w_id;
 

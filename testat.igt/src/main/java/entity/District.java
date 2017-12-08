@@ -12,7 +12,7 @@ import javax.persistence.ManyToOne;
 public class District {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name = "D_ZIP")
 	private long d_zip;
 
