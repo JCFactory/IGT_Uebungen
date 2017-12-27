@@ -100,21 +100,22 @@ public class EntityManager {
 	private Properties getNeo4JProperties() {
 		Properties properties = new Properties();
 		properties.setProperty("hibernate.ogm.datastore.provider", "neo4j_embedded");
-		properties.setProperty("hibernate.ogm.neo4j.database_path", "/Users/jacquelinefranssen/Library/Caches/Homebrew/neo4j-community-3.3.0/benchmark");
+		properties.setProperty("hibernate.ogm.datastore.host", "localhost");
+		properties.setProperty("hibernate.ogm.datastore.port", "1337");
+		properties.setProperty("hibernate.ogm.datastore.database", "benchmark");
+//		properties.setProperty("hibernate.ogm.neo4j.database_path", "/Users/jacquelinefranssen/Library/Caches/Homebrew/neo4j-community-3.3.0/benchmark");
 		properties.setProperty("hibernate.ogm.datastore.create_database", "true");
-		properties.setProperty("hibernate.search.default.directory_provider", "ram");
+//		properties.setProperty("hibernate.search.default.directory_provider", "ram");
 
 		return properties;
 	}
 
 	private Properties getCassandraProperties() {
-		Properties properties = new Properties();
-		
+		Properties properties = new Properties();	
 		properties.setProperty("hibernate.ogm.datastore.provider", "cassandra_experimental");
 		properties.setProperty("hibernate.ogm.datastore.host", "127.0.0.1");
 		properties.setProperty("hibernate.ogm.datastore.port", "9042");
 		properties.setProperty("hibernate.ogm.datastore.database", "benchmark");
-	
 		properties.setProperty("hibernate.ogm.datastore.create_database", "true");
 
 		return properties;
