@@ -18,6 +18,7 @@
 			<version>5.1.0.Final</version>
 		</dependency>
 
+
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
@@ -33,8 +34,16 @@
 		<dependency>
 			<groupId>org.hibernate.ogm</groupId>
 			<artifactId>hibernate-ogm-cassandra</artifactId>
-			<version>4.2.0.Final</version>
+			<version>5.1.0.Final</version>
 		</dependency>
+
+		<dependency>
+			<groupId>com.datastax.cassandra</groupId>
+			<artifactId>cassandra-driver-core</artifactId>
+			<version>3.3.2</version>
+		</dependency>
+
+
 
 		<dependency>
 			<groupId>org.hibernate.ogm</groupId>
