@@ -3,8 +3,9 @@ package app;
 import java.util.Properties;
 
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.ogm.OgmSessionFactory;
+import org.hibernate.cfg.Configuration;
 import org.hibernate.ogm.cfg.OgmConfiguration;
 
 import entity.Customer;
@@ -15,64 +16,105 @@ import entity.Warehouse;
 
 public class EntityManager {
 
-	protected OgmConfiguration configuration;
-	protected Properties properties;
-	protected OgmSessionFactory sessionFactory;
-	protected Session session;
-	protected Transaction transaction;
+	private Configuration configuration;
+	private Properties properties;
+	private SessionFactory sessionFactory;
+	private Session session;
+	private Transaction transaction;
 
+	public EntityManager(Database database) {
+		switch (database) {
+		case MYSQL:
+			this.configuration = new Configuration();
+			this.properties = getMySQLProperties();
+			break;
+
+		case MONGODB:
+			this.configuration = new OgmConfiguration();
+			this.properties = getMongoDBProperties();
+			break;
+
+		case NEO4J:
+			this.configuration = new OgmConfiguration();
+			this.properties = getNeo4JProperties();
+			break;
+
+		case CASSANDRA:
+			this.configuration = new OgmConfiguration();
+			this.properties = getCassandraProperties();
+			break;
+
+		case REDIS:
+			this.configuration = new OgmConfiguration();
+			this.properties = getRedisProperties();
+			break;
+
+		default:
+			System.out.println("ERROR CONFIGURATING DATABASE");
+			break;
+		}
+
+		this.configuration.addProperties(properties).addAnnotatedClass(Customer.class).addAnnotatedClass(District.class)
+				.addAnnotatedClass(Item.class).addAnnotatedClass(ItemOrder.class).addAnnotatedClass(Warehouse.class);
+	}
+
+	
 	public void setup() {
-		this.properties = new Properties();	
-		
-		// ----- HIBERNATE ORM ----- //
-		
-		/*
-		 * MYSQL
-		 */
-//		this.configuration = new Configuration();
-//		properties.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
-//		properties.setProperty("hibernate.connection.url", "jdbc:mysql://localhost:1521/benchmark");
-//		properties.setProperty("hibernate.connection.username", "java");
-//		properties.setProperty("hibernate.connection.password", "qq11ww22!!!");
-//		//properties.setProperty("hibernate.connection.autocommit", "true");
-//		properties.setProperty("hibernate.flushMode", "auto");
-//		properties.setProperty("log4j.logger.org.hibernate.type=trace ", "trace");
-//		properties.setProperty("hibernate.hbm2ddl.auto", "update");
-//		properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
-
-		
-
-		// ----- HIBERNATE OGM ----- //
-		
-		this.configuration = new OgmConfiguration();
-		
-		
-		/*
-		 * MONGODB
-		 */
-		this.properties.setProperty("hibernate.ogm.datastore.provider", "mongodb");
-		this.properties.setProperty("hibernate.ogm.datastore.host", "localhost");
-		this.properties.setProperty("hibernate.ogm.datastore.port", "27017");
-		this.properties.setProperty("hibernate.ogm.datastore.database", "benchmark");
-//		this.properties.setProperty("hibernate.ogm.datastore.username", "mongodb");
-//		this.properties.setProperty("hibernate.ogm.datastore.password", "mongodb");
-		this.properties.setProperty("hibernate.ogm.datastore.create_database", "true");
-		
-		
-		configuration.addProperties(properties);
-		configuration.addAnnotatedClass(Customer.class);
-		configuration.addAnnotatedClass(District.class);
-		configuration.addAnnotatedClass(Item.class);
-		configuration.addAnnotatedClass(ItemOrder.class);
-		configuration.addAnnotatedClass(Warehouse.class);
 
 		this.sessionFactory = configuration.buildSessionFactory();
 		this.session = sessionFactory.openSession();
 		this.transaction = session.beginTransaction();
-		
-		
+
 	}
-	
+
+	private Properties getMySQLProperties() {
+		Properties properties = new Properties();
+
+		properties.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
+		properties.setProperty("hibernate.connection.url", "jdbc:mysql://localhost:1521/benchmark");
+		properties.setProperty("hibernate.connection.username", "java");
+		properties.setProperty("hibernate.connection.password", "qq11ww22!!!");
+		// properties.setProperty("hibernate.connection.autocommit", "true");
+		properties.setProperty("hibernate.flushMode", "auto");
+		properties.setProperty("log4j.logger.org.hibernate.type=trace ", "trace");
+		properties.setProperty("hibernate.hbm2ddl.auto", "update");
+		properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
+
+		return properties;
+	}
+
+	private Properties getMongoDBProperties() {
+		Properties properties = new Properties();
+
+		properties.setProperty("hibernate.ogm.datastore.provider", "mongodb");
+		properties.setProperty("hibernate.ogm.datastore.host", "localhost");
+		properties.setProperty("hibernate.ogm.datastore.port", "27017");
+		properties.setProperty("hibernate.ogm.datastore.database", "benchmark");
+		// properties.setProperty("hibernate.ogm.datastore.username", "mongodb");
+		// properties.setProperty("hibernate.ogm.datastore.password", "mongodb");
+		properties.setProperty("hibernate.ogm.datastore.create_database", "true");
+
+		return properties;
+	}
+
+	private Properties getNeo4JProperties() {
+		Properties properties = new Properties();
+
+		return properties;
+	}
+
+	private Properties getCassandraProperties() {
+		Properties properties = new Properties();
+
+		return properties;
+	}
+
+	private Properties getRedisProperties() {
+		Properties properties = new Properties();
+
+		return properties;
+	}
+
 	public Session getSession() {
 		return this.session;
 	}
