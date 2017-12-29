@@ -60,7 +60,6 @@ public class EntityManager {
 
 	
 	public void setup() {
-
 		this.sessionFactory = configuration.buildSessionFactory();
 		this.session = sessionFactory.openSession();
 		this.transaction = session.beginTransaction();
@@ -87,7 +86,7 @@ public class EntityManager {
 		Properties properties = new Properties();
 
 		properties.setProperty("hibernate.ogm.datastore.provider", "mongodb");
-		properties.setProperty("hibernate.ogm.datastore.host", "localhost");
+		properties.setProperty("hibernate.ogm.datastore.host", "127.0.0.1");
 		properties.setProperty("hibernate.ogm.datastore.port", "27017");
 		properties.setProperty("hibernate.ogm.datastore.database", "benchmark");
 		// properties.setProperty("hibernate.ogm.datastore.username", "mongodb");
@@ -100,12 +99,15 @@ public class EntityManager {
 	private Properties getNeo4JProperties() {
 		Properties properties = new Properties();
 		properties.setProperty("hibernate.ogm.datastore.provider", "neo4j_embedded");
-		properties.setProperty("hibernate.ogm.datastore.host", "localhost");
-		properties.setProperty("hibernate.ogm.datastore.port", "1337");
+//		properties.setProperty("hibernate.ogm.datastore.host", "localhost");
+//		properties.setProperty("hibernate.ogm.datastore.port", "7474");
+		properties.setProperty("hibernate.ogm.neo4j.database_path", "/Users/jacquelinefranssen/neo4j-community-3.3.0/benchmark");
+//		properties.setProperty("hibernate.ogm.datastore.username", "neo4j");
+//		properties.setProperty("hibernate.ogm.datastore.password", "jacky");
 		properties.setProperty("hibernate.ogm.datastore.database", "benchmark");
-//		properties.setProperty("hibernate.ogm.neo4j.database_path", "/Users/jacquelinefranssen/Library/Caches/Homebrew/neo4j-community-3.3.0/benchmark");
 		properties.setProperty("hibernate.ogm.datastore.create_database", "true");
-//		properties.setProperty("hibernate.search.default.directory_provider", "ram");
+		properties.setProperty("dbms.allow_format_migration", "true");
+
 
 		return properties;
 	}
@@ -123,6 +125,12 @@ public class EntityManager {
 
 	private Properties getRedisProperties() {
 		Properties properties = new Properties();
+
+		properties.setProperty("hibernate.ogm.datastore.provider", "redis_experimental");
+		properties.setProperty("hibernate.ogm.datastore.host", "127.0.0.1");
+		properties.setProperty("hibernate.ogm.datastore.port", "6379");
+		properties.setProperty("hibernate.ogm.datastore.database", "0");
+		properties.setProperty("hibernate.ogm.datastore.create_database", "true");
 
 		return properties;
 	}
