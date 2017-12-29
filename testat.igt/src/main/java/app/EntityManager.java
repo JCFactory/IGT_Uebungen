@@ -34,9 +34,9 @@ public class EntityManager {
 			this.properties = getMongoDBProperties();
 			break;
 
-		case NEO4J:
+		case ORIENTDB:
 			this.configuration = new OgmConfiguration();
-			this.properties = getNeo4JProperties();
+			this.properties = getOrientProperties();
 			break;
 
 		case CASSANDRA:
@@ -73,7 +73,6 @@ public class EntityManager {
 		properties.setProperty("hibernate.connection.url", "jdbc:mysql://localhost:1521/benchmark");
 		properties.setProperty("hibernate.connection.username", "java");
 		properties.setProperty("hibernate.connection.password", "qq11ww22!!!");
-		// properties.setProperty("hibernate.connection.autocommit", "true");
 		properties.setProperty("hibernate.flushMode", "auto");
 		properties.setProperty("log4j.logger.org.hibernate.type=trace ", "trace");
 		properties.setProperty("hibernate.hbm2ddl.auto", "update");
@@ -89,24 +88,22 @@ public class EntityManager {
 		properties.setProperty("hibernate.ogm.datastore.host", "127.0.0.1");
 		properties.setProperty("hibernate.ogm.datastore.port", "27017");
 		properties.setProperty("hibernate.ogm.datastore.database", "benchmark");
-		// properties.setProperty("hibernate.ogm.datastore.username", "mongodb");
-		// properties.setProperty("hibernate.ogm.datastore.password", "mongodb");
 		properties.setProperty("hibernate.ogm.datastore.create_database", "true");
 
 		return properties;
 	}
 
-	private Properties getNeo4JProperties() {
+	private Properties getOrientProperties() {
 		Properties properties = new Properties();
-		properties.setProperty("hibernate.ogm.datastore.provider", "neo4j_embedded");
-//		properties.setProperty("hibernate.ogm.datastore.host", "localhost");
-//		properties.setProperty("hibernate.ogm.datastore.port", "7474");
-		properties.setProperty("hibernate.ogm.neo4j.database_path", "/Users/jacquelinefranssen/neo4j-community-3.3.0/benchmark");
-//		properties.setProperty("hibernate.ogm.datastore.username", "neo4j");
-//		properties.setProperty("hibernate.ogm.datastore.password", "jacky");
+		properties.setProperty("hibernate.ogm.datastore.provider", "orientdb_neo4j");
+		properties.setProperty("hibernate.connection.url", "192.168.178.20");
+		properties.setProperty("hibernate.ogm.datastore.port", "2481");
+		properties.setProperty("hibernate.connection.username", "root");
+		properties.setProperty("hibernate.connection.password", "root");
 		properties.setProperty("hibernate.ogm.datastore.database", "benchmark");
 		properties.setProperty("hibernate.ogm.datastore.create_database", "true");
-		properties.setProperty("dbms.allow_format_migration", "true");
+		
+	
 
 
 		return properties;
