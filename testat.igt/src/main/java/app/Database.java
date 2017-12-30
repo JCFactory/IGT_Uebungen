@@ -1,5 +1,5 @@
 package app;
 
 public enum Database {
-	MYSQL, MONGODB, ORIENTDB, CASSANDRA, REDIS
+	MYSQL, MONGODB, NEO4J, CASSANDRA, REDIS
 }

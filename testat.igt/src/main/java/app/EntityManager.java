@@ -34,9 +34,9 @@ public class EntityManager {
 			this.properties = getMongoDBProperties();
 			break;
 
-		case ORIENTDB:
+		case NEO4J:
 			this.configuration = new OgmConfiguration();
-			this.properties = getOrientProperties();
+			this.properties = getNeo4JProperties();
 			break;
 
 		case CASSANDRA:
@@ -93,16 +93,15 @@ public class EntityManager {
 		return properties;
 	}
 
-	private Properties getOrientProperties() {
+	private Properties getNeo4JProperties() {
 		Properties properties = new Properties();
-		properties.setProperty("hibernate.ogm.datastore.provider", "orientdb_neo4j");
-		properties.setProperty("hibernate.connection.url", "192.168.178.20");
-		properties.setProperty("hibernate.ogm.datastore.port", "2481");
-		properties.setProperty("hibernate.connection.username", "root");
-		properties.setProperty("hibernate.connection.password", "root");
+		properties.setProperty("hibernate.ogm.datastore.provider", "neo4j_embedded");
+		properties.setProperty("hibernate.ogm.neo4j.database_path", "/usr/local/Cellar/neo4j/3.3.0/libexec/data");
+//		properties.setProperty("hibernate.ogm.datastore.host", "127.0.0.1");
+//		properties.setProperty("hibernate.ogm.datastore.port", "7474");
 		properties.setProperty("hibernate.ogm.datastore.database", "benchmark");
 		properties.setProperty("hibernate.ogm.datastore.create_database", "true");
-		
+
 	
 
 
