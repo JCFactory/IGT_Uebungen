@@ -1,10 +1,13 @@
 package entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity(name="CUSTOMER")
 public class Customer {
@@ -22,6 +25,9 @@ public class Customer {
     
 	@Column(name="C_COMPANY")
     private String c_company;
+	
+	@ManyToOne(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+	private District district;
     
     public Customer() {}
 
@@ -56,6 +62,16 @@ public class Customer {
 	public void setC_company(String c_company) {
 		this.c_company = c_company;
 	}
+
+	public District getDistrict() {
+		return district;
+	}
+
+	public void setDistrict(District district) {
+		this.district = district;
+	}
+	
+	
     
 
 }

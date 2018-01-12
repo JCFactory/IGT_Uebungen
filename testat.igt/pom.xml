@@ -19,6 +19,12 @@
 		</dependency>
 
 		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20160810</version>
+		</dependency>
+
+		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.40</version>
@@ -46,20 +52,12 @@
 			<version>5.1.0.Final</version>
 		</dependency>
 
-		<!-- diese  2 Properties  müssen deaktiviert werden wenn neo4j laufen soll-->
+		<!-- diese 2 Properties müssen deaktiviert werden wenn neo4j laufen soll -->
 
-	<!-- <dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-search</artifactId>
-			<version>5.9.0.Beta1</version>
-		</dependency>
-
-
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-search-orm</artifactId>
-			<version>5.8.2.Final</version>
-		</dependency> -->
+		<!-- <dependency> <groupId>org.hibernate</groupId> <artifactId>hibernate-search</artifactId> 
+			<version>5.9.0.Beta1</version> </dependency> <dependency> <groupId>org.hibernate</groupId> 
+			<artifactId>hibernate-search-orm</artifactId> <version>5.8.2.Final</version> 
+			</dependency> -->
 
 
 
@@ -68,6 +66,8 @@
 			<artifactId>hibernate-ogm-redis</artifactId>
 			<version>5.1.0.Final</version>
 		</dependency>
+
+		<!-- netty auskommentieren für cassandra -->
 
 		<dependency>
 			<groupId>io.netty</groupId>
@@ -85,6 +85,12 @@
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>1.6.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<version>1.5.9.RELEASE</version>
 		</dependency>
 
 	</dependencies>

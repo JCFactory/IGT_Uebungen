@@ -1,10 +1,13 @@
 package entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity(name = "ITEM")
 public class Item {
@@ -18,6 +21,9 @@ public class Item {
 	
 	@Column(name = "I_PRICE")
 	private double i_price;
+	
+	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	private ItemOrder itemOrder;
 	
 	public Item() {}
 
@@ -45,5 +51,13 @@ public class Item {
 		this.i_price = i_price;
 	}
 
+	public ItemOrder getItemOrder() {
+		return itemOrder;
+	}
+
+	public void setItemOrder(ItemOrder itemOrder) {
+		this.itemOrder = itemOrder;
+	}
+	
 	
 }
